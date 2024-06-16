@@ -54,3 +54,28 @@ void ImprimirLista(Nodo *lista)
   }
   cout << endl;
 }
+
+Nodo *PrimerElemento(Nodo *lista)
+{
+  if(EsListaVacia(lista))
+  {
+    return nullptr;
+  }
+  else 
+  {
+    return lista;
+  }
+}
+
+Nodo *borrar(Nodo **lista)
+{
+  if(EsListaVacia(*lista))
+  {
+    return nullptr;
+  }
+
+  Nodo *aux = *lista;
+  *lista = (*lista)->siguiente;
+  delete aux;
+  return *lista;
+}
