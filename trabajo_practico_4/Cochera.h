@@ -44,14 +44,24 @@ Cochera *Estacionar(Cochera *cochera, Auto a) {
   }
 }
 
+Cochera *QuitarUltimo(Cochera *cochera) {
+  if (cochera->autos == nullptr) {
+    return cochera;
+  }
+  Nodo *aux = cochera->autos;
+  cochera->autos = cochera->autos->siguiente;
+  delete aux;
+  return cochera;
+}
+
 void Mostsrar(Cochera *cochera) {
   if (cochera->autos == nullptr) {
     return;
   }
   Nodo *aux = cochera->autos;
-  while (aux->siguiente) {
-    aux = aux->siguiente;
+  while (aux) {
     cout << aux->dato << " ";
+    aux = aux->siguiente;
   }
   cout << endl;
 }
