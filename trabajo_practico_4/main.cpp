@@ -10,8 +10,8 @@ int main(int argc, char *argv[]) {
   cochera = Estacionar(cochera, 30);
   cochera = Estacionar(cochera, 40);
   cochera = Estacionar(cochera, 50);
-  Mostsrar(cochera);
+  Mostrar(cochera);
   cochera = QuitarUltimo(cochera);
-  Mostsrar(cochera);
+  Mostrar(cochera);
   return 0;
 }

@@ -54,7 +54,24 @@ Cochera *QuitarUltimo(Cochera *cochera) {
   return cochera;
 }
 
-void Mostsrar(Cochera *cochera) {
+Cochera *Salir(Cochera *cochera, Auto a) {
+  if (cochera->autos == nullptr) {
+    return cochera;
+  }
+
+  Nodo *aux = cochera->autos;
+  while (aux->siguiente != nullptr) {
+    if (aux->siguiente->dato == a) {
+      aux->siguiente = aux->siguiente->siguiente;
+      cochera->libres++;
+      return cochera;
+    }
+    aux = aux->siguiente;
+  }
+  return cochera;
+}
+
+void Mostrar(Cochera *cochera) {
   if (cochera->autos == nullptr) {
     return;
   }
