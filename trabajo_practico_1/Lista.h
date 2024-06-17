@@ -9,53 +9,53 @@ typedef struct Nodo{
 
 Nodo *CrearLista()
 {
-  return nullptr;
+  return nullptr;  //<- O(1)
 }
 
 bool EsListaVacia(Nodo *lista)
 {
-  return lista == nullptr;
+  return lista == nullptr;  //<- O(1)
 }
 
 Nodo *CrearNodo(Item d)
 {
-  Nodo *nuevo = new Nodo;
-  nuevo->dato = d;
-  nuevo->siguiente = nullptr;
-  return nuevo;
+  Nodo *nuevo = new Nodo;  //<- O(1)
+  nuevo->dato = d;         //<- O(1)
+  nuevo->siguiente = nullptr;  //<- O(1)
+  return nuevo;  //<- O(1)
 }
 
 Nodo *Insertar(Nodo **lista, Item d)
 {
-  Nodo *nuevo = CrearNodo(d);
-  if(EsListaVacia(*lista))
+  Nodo *nuevo = CrearNodo(d);  //<- O(1)
+  if(EsListaVacia(*lista))  //<- O(1)
   {
-    *lista = nuevo;
+    *lista = nuevo;  //<- O(1)
   }
-  else {
-    nuevo->siguiente = *lista;
-    *lista = nuevo;
+  else {       // todos O(1)
+    nuevo->siguiente = *lista;  //<- O(1)
+    *lista = nuevo;  //<- O(1)
   }
-  return *lista;
+  return *lista;  //<- O(1)
 }
 
 void ImprimirLista(Nodo *lista)
 {
-  if(lista == nullptr)
+  if(lista == nullptr)   // <- O(1)
   {
-    cout << "Lista vacía" << endl;
-    return;
+    cout << "Lista vacía" << endl;  //<- O(1)
+    return;  //<- O(1)
   }
-  Nodo *aux = lista;
-  while(aux != nullptr)
+  Nodo *aux = lista;  //<- O(1)
+  while(aux != nullptr)  //<- O(1)            O(n)
   {
-    cout << aux->dato << " ";
-    aux = aux->siguiente;
+    cout << aux->dato << " ";  //<- O(1)
+    aux = aux->siguiente;  //<- O(1)
   }
-  cout << endl;
+  cout << endl;  //<- O(1)
 }
 
-Nodo *PrimerElemento(Nodo *lista)
+Nodo *PrimerElemento(Nodo *lista) //<- O(1)
 {
   if(EsListaVacia(lista))
   {
@@ -67,7 +67,7 @@ Nodo *PrimerElemento(Nodo *lista)
   }
 }
 
-Nodo *Borrar(Nodo **lista)
+Nodo *Borrar(Nodo **lista) //<- O(1)
 {
   if(EsListaVacia(*lista))
   {
@@ -80,7 +80,7 @@ Nodo *Borrar(Nodo **lista)
   return *lista;
 }
 
-int Longitud(Nodo *lista)
+int Longitud(Nodo *lista) // <- O(n)
 {
   if(EsListaVacia(lista))
   {
@@ -92,7 +92,7 @@ int Longitud(Nodo *lista)
   }
 }
 
-bool Pertenece(Nodo *lista, Item d)
+bool Pertenece(Nodo *lista, Item d) // <- O(n)
 {
   if(EsListaVacia(lista))
   {
@@ -111,7 +111,7 @@ bool Pertenece(Nodo *lista, Item d)
   }
 }
 
-Nodo *InsertarK(Nodo **lista, Item d, int k)
+Nodo *InsertarK(Nodo **lista, Item d, int k) // <- O(n)
 {
   // insertar en la posicion k
   Nodo *nuevo = CrearNodo(d);
@@ -133,7 +133,7 @@ Nodo *InsertarK(Nodo **lista, Item d, int k)
   return *lista;
 }
 
-Item PosicionK(Nodo *lista, int k)
+Item PosicionK(Nodo *lista, int k) // <- O(n)
 {
   if(k == 0)
   {
@@ -151,6 +151,25 @@ Item PosicionK(Nodo *lista, int k)
     else 
     {
       return aux->dato;
+    }
+  }
+}
+
+Item PosicionKRecursivo(Nodo *lista, int k)
+{
+  if (EsListaVacia(lista))
+  {
+    return -9999;
+  }
+  else 
+  {
+    if(k == 0)
+    {
+      return lista->dato;
+    }
+    else 
+    {
+      return PosicionKRecursivo(lista->siguiente, k-1);
     }
   }
 }

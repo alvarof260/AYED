@@ -24,6 +24,6 @@ int main()
   {
     cout << "4 no es perteneciente" << endl;
   }
-  cout << "Posicion 2: " << PosicionK(lista, 2) << endl;
+  cout << "Posicion 2: " << PosicionKRecursivo(lista, 1) << endl;
   return 0;
 }
