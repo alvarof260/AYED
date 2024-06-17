@@ -13,6 +13,16 @@ int main()
   Nodo *primer = PrimerElemento(lista);
   cout << "Primer elemento: " << primer->dato << endl;
   lista = borrar(&lista);
+  cout << "Longitud: " << Longitud(lista) << endl;
+  lista = InsertarK(&lista, 4, 2);
   ImprimirLista(lista);
+  if(Pertenece(lista, 4))
+  {
+    cout << "4 es perteneciente" << endl;
+  }
+  else
+  {
+    cout << "4 no es perteneciente" << endl;
+  }
   return 0;
 }

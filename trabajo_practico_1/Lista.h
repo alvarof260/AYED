@@ -79,3 +79,56 @@ Nodo *borrar(Nodo **lista)
   delete aux;
   return *lista;
 }
+
+int Longitud(Nodo *lista)
+{
+  if(EsListaVacia(lista))
+  {
+    return 0;
+  }
+  else
+  {
+    return 1 + Longitud(lista->siguiente);
+  }
+}
+
+bool Pertenece(Nodo *lista, Item d)
+{
+  if(EsListaVacia(lista))
+  {
+    return false;
+  }
+  else 
+  {
+    if(lista->dato == d)
+    {
+      return true;
+    }
+    else 
+    {
+      return Pertenece(lista->siguiente, d);
+    }
+  }
+}
+
+Nodo *InsertarK(Nodo **lista, Item d, int k)
+{
+  // insertar en la posicion k
+  Nodo *nuevo = CrearNodo(d);
+  if(k == 0)
+  {
+    nuevo->siguiente = *lista;
+    *lista = nuevo;
+  }
+  else
+  {
+    Nodo *aux = *lista;
+    for(int i = 0; i < k - 1; i++)
+    {
+      aux = aux->siguiente;
+    }
+    nuevo->siguiente = aux->siguiente;
+    aux->siguiente = nuevo;
+  }
+  return *lista;
+}
