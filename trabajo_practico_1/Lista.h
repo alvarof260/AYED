@@ -67,7 +67,7 @@ Nodo *PrimerElemento(Nodo *lista)
   }
 }
 
-Nodo *borrar(Nodo **lista)
+Nodo *Borrar(Nodo **lista)
 {
   if(EsListaVacia(*lista))
   {
@@ -131,4 +131,26 @@ Nodo *InsertarK(Nodo **lista, Item d, int k)
     aux->siguiente = nuevo;
   }
   return *lista;
+}
+
+Item PosicionK(Nodo *lista, int k)
+{
+  if(k == 0)
+  {
+    return PrimerElemento(lista)->dato;
+  }
+  else {
+    Nodo *aux = lista;
+    for (int i = 0; i < k-1 ; i++) {
+      aux = Borrar(&aux);
+    }
+    if (EsListaVacia(aux))
+    {
+      return -9999;
+    }
+    else 
+    {
+      return aux->dato;
+    }
+  }
 }

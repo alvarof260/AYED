@@ -12,7 +12,7 @@ int main()
   ImprimirLista(lista);
   Nodo *primer = PrimerElemento(lista);
   cout << "Primer elemento: " << primer->dato << endl;
-  lista = borrar(&lista);
+  lista = Borrar(&lista);
   cout << "Longitud: " << Longitud(lista) << endl;
   lista = InsertarK(&lista, 4, 2);
   ImprimirLista(lista);
@@ -24,5 +24,6 @@ int main()
   {
     cout << "4 no es perteneciente" << endl;
   }
+  cout << "Posicion 2: " << PosicionK(lista, 2) << endl;
   return 0;
 }
