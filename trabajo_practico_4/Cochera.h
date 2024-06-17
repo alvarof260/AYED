@@ -50,6 +50,7 @@ Cochera *QuitarUltimo(Cochera *cochera) {
   }
   Nodo *aux = cochera->autos;
   cochera->autos = cochera->autos->siguiente;
+  cochera->libres++;
   delete aux;
   return cochera;
 }
@@ -69,6 +70,26 @@ Cochera *Salir(Cochera *cochera, Auto a) {
     aux = aux->siguiente;
   }
   return cochera;
+}
+
+bool EstaVacio(Cochera *cochera) { return cochera->autos == nullptr; }
+
+int Capacidad(Cochera *cochera) { return cochera->max; }
+
+int libres(Cochera *cochera) { return cochera->libres; }
+
+bool Estacionado(Cochera *cochera, Auto a) {
+  if (cochera->autos == nullptr) {
+    return false;
+  }
+  Nodo *aux = cochera->autos;
+  while (aux != nullptr) {
+    if (aux->dato == a) {
+      return true;
+    }
+    aux = aux->siguiente;
+  }
+  return false;
 }
 
 void Mostrar(Cochera *cochera) {
