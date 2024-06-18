@@ -9,9 +9,9 @@ int main(int argc, char *argv[]) {
     cout << "Pila vacía" << endl;
   }
 
-  pila = Push(pila, 10);
+  pila = Push(pila, -10);
   pila = Push(pila, 20);
-  pila = Push(pila, 30);
+  pila = Push(pila, -30);
   pila = Push(pila, 40);
   pila = Push(pila, 50);
   Item top = Top(pila);
@@ -19,5 +19,9 @@ int main(int argc, char *argv[]) {
   pila = Pop(pila);
   top = Top(pila);
   cout << "Top: " << top << endl;
+  Mostrar(pila);
+  cout << "Fondo: " << Fondo(pila) << endl;
+  pila = EliminarNegativos(pila);
+  Mostrar(pila);
   return 0;
 }
