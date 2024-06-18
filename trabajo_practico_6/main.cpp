@@ -19,11 +19,15 @@ int main() {
   fila = EnFila(fila, 80);
   fila = EnFila(fila, 90);
   fila = EnFila(fila, 100);
-  Nodo *aux = fila->frente;
-  while (aux) {
-    cout << aux->dato << endl;
-    aux = aux->siguiente;
+  Mostrar(fila);
+  if (Pertenece(fila, 85)) { // <- O(n)
+    cout << "85 pertenece" << endl;
+  } else {
+    cout << "85 no pertenece" << endl;
   }
   cout << "Longitud: " << fila->longitud << endl;
+  while (fila->longitud == 0) {
+    fila = DeFila(fila);
+  }
   return 0;
 }

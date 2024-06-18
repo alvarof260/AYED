@@ -47,3 +47,42 @@ Fila *EnFila(Fila *Fila, Item dato) {
   Fila->longitud++;
   return Fila;
 }
+
+void Mostrar(Fila *Fila) {
+  if (Fila->frente == nullptr) {
+    return;
+  }
+  Nodo *aux = Fila->frente;
+  while (aux) {
+    cout << aux->dato << " ";
+    aux = aux->siguiente;
+  }
+  cout << endl;
+}
+
+int Longitud(Fila *Fila) { return Fila->longitud; }
+
+Fila *DeFila(Fila *Fila) {
+  if (Fila->frente == nullptr) {
+    return Fila;
+  }
+  Nodo *aux = Fila->frente;
+  Fila->frente = Fila->frente->siguiente;
+  Fila->longitud--;
+  delete aux;
+  return Fila;
+}
+
+bool Pertenece(Fila *Fila, Item dato) {
+  if (Fila->frente == nullptr) {
+    return false;
+  }
+  Nodo *aux = Fila->frente;
+  while (aux != nullptr) {
+    if (aux->dato == dato) {
+      return true;
+    }
+    aux = aux->siguiente;
+  }
+  return false;
+}
