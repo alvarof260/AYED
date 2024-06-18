@@ -8,7 +8,6 @@ int main() {
   if (EsFilaVacia(fila)) {
     cout << "Fila vacía" << endl;
   }
-
   fila = EnFila(fila, 10);
   fila = EnFila(fila, 20);
   fila = EnFila(fila, 30);
@@ -20,14 +19,17 @@ int main() {
   fila = EnFila(fila, 90);
   fila = EnFila(fila, 100);
   Mostrar(fila);
-  if (Pertenece(fila, 85)) { // <- O(n)
-    cout << "85 pertenece" << endl;
-  } else {
-    cout << "85 no pertenece" << endl;
-  }
-  cout << "Longitud: " << fila->longitud << endl;
-  while (fila->longitud == 0) {
-    fila = DeFila(fila);
-  }
+  Fila *fila2 = FilaVacia();
+  fila2 = EnFila(fila2, 15);
+  fila2 = EnFila(fila2, 25);
+  fila2 = EnFila(fila2, 35);
+  fila2 = EnFila(fila2, 45);
+  fila2 = EnFila(fila2, 55);
+  fila2 = EnFila(fila2, 65);
+  Mostrar(fila2);
+
+  Fila *fila3 = FilaVacia();
+  fila3 = Mezclar(fila, fila2);
+  Mostrar(fila3);
   return 0;
 }

@@ -86,3 +86,34 @@ bool Pertenece(Fila *Fila, Item dato) {
   }
   return false;
 }
+
+Fila *MezclarRecursiva(Fila *l1, Fila *l2, Fila *fAux) {
+  if (EsFilaVacia(l1) && EsFilaVacia(l2)) {
+    return fAux;
+  } else {
+    if (EsFilaVacia(l1)) {
+      fAux = EnFila(fAux, Frente(l2));
+      l2 = DeFila(l2);
+    } else {
+      if (EsFilaVacia(l2)) {
+        fAux = EnFila(fAux, Frente(l1));
+        l1 = DeFila(l1);
+      } else {
+        if (l1->frente->dato <= l2->frente->dato) {
+          fAux = EnFila(fAux, Frente(l1));
+          l1 = DeFila(l1);
+        } else {
+          fAux = EnFila(fAux, Frente(l2));
+          l2 = DeFila(l2);
+        }
+      }
+    }
+    return MezclarRecursiva(l1, l2, fAux);
+  }
+}
+
+Fila *Mezclar(Fila *l1, Fila *l2) {
+  Fila *fAux = FilaVacia();
+  fAux = MezclarRecursiva(l1, l2, fAux);
+  return fAux;
+}
